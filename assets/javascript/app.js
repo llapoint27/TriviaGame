@@ -16,17 +16,17 @@ var data = [{
     question: "What is Pheobe's twin sister's name",
     potentialAnswers: ["Rachel", "Ursula", "Becky", "Robin"],
     Answer: 1,
-    correctImage: 
-    wrongImage: "https://www.iconsdb.com/icons/preview/red/x-mark-3-xxl.png",
+    correctImage: "<img src='./assets/images/q1.gif'>",
+    wrongImage: "<img src='./assets/images/thumbs_down.png'>",
     qNumber: 1
 },
 //question no. 2 
 {
     question: "What is the 'Joey special'?",
-    potentialAnswers: ["roast beef sandwhich", "pepperoni pizza", "hug from Joey", "rrdering 2 pizzas at once"],
+    potentialAnswers: ["roast beef sandwhich", "pepperoni pizza", "hug from Joey", "ordering 2 pizzas at once"],
     Answer: 3,
-    correctImage: 
-    wrongImage: "https://www.iconsdb.com/icons/preview/red/x-mark-3-xxl.png",
+    correctImage: "<img src='./assets/images/q2.gif'>",
+    wrongImage: "<img src='./assets/images/thumbs_down.png'>",
     qNumber: 2
 
     //question no 3.
@@ -35,52 +35,52 @@ var data = [{
     question: "What does Phoebe change her name to in the final season?",
     potentialAnswers: ["Princess Consuela Bananahammock", "Princess Pheffer Phefferman", "Kitty Kat", "Cindy Crawford"],
     Answer: 0,
-    correctImage: 
-    wrongImage: "https://www.iconsdb.com/icons/preview/red/x-mark-3-xxl.png",
+    correctImage: "<img src='./assets/images/q3.gif'>",
+    wrongImage:"<img src='./assets/images/thumbs_down.png'>",
     qNumber: 3
-}
+},
 
 {
     question: "How many categories on towels does Monica have?",
     potentialAnswers: ["Viva Las Gaygas", "It's Raining Men", "Vegas Gaygas", "One Lady Show"],
     Answer: 0,
-    correctImage: 
-    wrongImage: "https://www.iconsdb.com/icons/preview/red/x-mark-3-xxl.png",
+    correctImage: "<img src='./assets/images/q4.gif'>",
+    wrongImage: "<img src='./assets/images/thumbs_down.png'>",
     qNumber: 4
 
-}
+},
 
 {
     question: "What is Chandler's dad's burlesque show called?",
     potentialAnswers: [9, 11, 5, 13],
     Answer: 1,
-    correctImage:
-    wrongImage: "https://www.iconsdb.com/icons/preview/red/x-mark-3-xxl.png",
+    correctImage:"<img src='./assets/images/q5.gif'>",
+    wrongImage:"<img src='./assets/images/thumbs_down.png'>",
     qNumber: 5
 
 
-}
+},
 
 {
     question: "Which country does Chandler tell Janice he’s moving to?",
     potentialAnswers: ["Turkey", "Brazil", "Yemen", "Bali"],
     Answer: 2,
-    correctImage:
-    wrongImage: "https://www.iconsdb.com/icons/preview/red/x-mark-3-xxl.png",
+    correctImage: "<img src='./assets/images/q6.gif'>",
+    wrongImage:"<img src='./assets/images/thumbs_down.png'>",
     qNumber: 6
 
 
-}
+},
 
 {
     question: "What is Monica’s biggest pet peeve?",
     potentialAnswers: ["Her towels not folded", "Uncleanded dishes", "Being later", "Animals dressed as humans"],
     Answer: 2,
-    correctImage:
-    wrongImage: "https://www.iconsdb.com/icons/preview/red/x-mark-3-xxl.png",
+    correctImage:"<img src='./assets/images/q1.gif'>",
+    wrongImage:"<img src='./assets/images/thumbs_down.png'>",
     qNumber: 7
 
-}
+},
 
 
 

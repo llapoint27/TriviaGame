@@ -1,9 +1,12 @@
-/* 
-body {
-    background: url('../images/friends.jpg');
+
+/* body {
+    background: url('../images/friends_back.jpg');
 } */
 
-
+.logo {
+    width: 500px;
+    height: 75px;
+}
 
 .container {
     margin: auto;
@@ -11,7 +14,7 @@ body {
     background-color: #777;
     border: 8px solid black;
     opacity: .60;
-    filter: alpha(opacity=50);
+    /* filter: alpha(opacity=50); */
     width: 600px;
     height: 400px;
     border-radius: 25px;
@@ -26,13 +29,14 @@ body {
 h1 {
     text-align: center;
     color: black;
-    font-size: 50px;
-    font-family: 'Bungee Inline', cursive;
+    font-size: 55px;
+    font-family: 'Permanent Marker', cursive;
+
 
 }
 
 .parent {
-    font-size: 30px;
+    font-size: 20px;
     color: white;
     text-decoration: none;
     cursor: pointer; 
