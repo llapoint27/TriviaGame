@@ -9,12 +9,11 @@
 }
 
 .container {
-    margin: auto;
     text-align: center;
     background-color: #777;
     border: 8px solid black;
     opacity: .60;
-    /* filter: alpha(opacity=50); */
+    filter: alpha(opacity=50);
     width: 600px;
     height: 400px;
     border-radius: 25px;
@@ -46,8 +45,13 @@ li:hover {
     border: 2px solid black;
     background: white;
     color: blue;
+    list-style-type: none;
 }
 
+.clickable {
+    list-style-type: none;
+
+}
 
 
 
