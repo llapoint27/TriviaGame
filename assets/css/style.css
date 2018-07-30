@@ -1,0 +1,42 @@
+/* 
+body {
+    background: url('../images/friends.jpg');
+} */
+
+
+
+.container {
+    margin: auto;
+    text-align: center;
+    background-color: #777;
+    border: 8px solid black;
+    opacity: .60;
+    filter: alpha(opacity=50);
+    width: 600px;
+    height: 400px;
+    border-radius: 25px;
+    
+}
+
+#time {
+    color:white;
+    font-size: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: black;
+    font-size: 50px;
+    font-family: 'Bungee Inline', cursive;
+
+}
+
+.parent {
+    font-size: 30px;
+    color: white;
+    text-decoration: none;
+    cursor: pointer; 
+}
+
+
+
