@@ -38,9 +38,16 @@ h1 {
 .parent {
     font-size: 20px;
     color: white;
-    text-decoration: none;
     cursor: pointer; 
 }
+
+li:hover {
+    font-weight: bold;
+    border: 2px solid black;
+    background: white;
+    color: blue;
+}
+
 
 
 

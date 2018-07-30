@@ -8,11 +8,8 @@ var userTotalTime = 0;
 var userGuess;
 
 
-//_______________________________
-
 //Created the varible 'data' to store each question as an object. Each object will hold the question, array of answers, correct answer, and correct image and image letting you know answer is incorrect. 
 var data = [{
-    //question no. 1
     question: "What is Pheobe's twin sister's name",
     potentialAnswers: ["Rachel", "Ursula", "Becky", "Robin"],
     Answer: 1,
@@ -20,7 +17,6 @@ var data = [{
     wrongImage: "<img src='./assets/images/thumbs_down.png'>",
     qNumber: 1
 },
-//question no. 2 
 {
     question: "What is the 'Joey special'?",
     potentialAnswers: ["roast beef sandwhich", "pepperoni pizza", "hug from Joey", "ordering 2 pizzas at once"],
@@ -28,8 +24,6 @@ var data = [{
     correctImage: "<img src='./assets/images/q2.gif'>",
     wrongImage: "<img src='./assets/images/thumbs_down.png'>",
     qNumber: 2
-
-    //question no 3.
 },
 {
     question: "What does Phoebe change her name to in the final season?",
@@ -42,23 +36,20 @@ var data = [{
 
 {
     question: "How many categories on towels does Monica have?",
-    potentialAnswers: ["Viva Las Gaygas", "It's Raining Men", "Vegas Gaygas", "One Lady Show"],
+    potentialAnswers: [9, 11, 5, 13],
     Answer: 0,
     correctImage: "<img src='./assets/images/q4.gif'>",
     wrongImage: "<img src='./assets/images/thumbs_down.png'>",
     qNumber: 4
-
 },
 
 {
     question: "What is Chandler's dad's burlesque show called?",
-    potentialAnswers: [9, 11, 5, 13],
+    potentialAnswers: ["Viva Las Gaygas", "It's Raining Men", "Vegas Gaygas", "One Lady Show"],
     Answer: 1,
     correctImage:"<img src='./assets/images/q5.gif'>",
     wrongImage:"<img src='./assets/images/thumbs_down.png'>",
     qNumber: 5
-
-
 },
 
 {
@@ -68,18 +59,15 @@ var data = [{
     correctImage: "<img src='./assets/images/q6.gif'>",
     wrongImage:"<img src='./assets/images/thumbs_down.png'>",
     qNumber: 6
-
-
 },
 
 {
     question: "What is Monica’s biggest pet peeve?",
-    potentialAnswers: ["Her towels not folded", "Uncleanded dishes", "Being later", "Animals dressed as humans"],
+    potentialAnswers: ["her towels not folded", "unwashed dishes", "being late", "aimals dressed as humans"],
     Answer: 2,
-    correctImage:"<img src='./assets/images/q1.gif'>",
+    correctImage:"<img src='./assets/images/q7.gif'>",
     wrongImage:"<img src='./assets/images/thumbs_down.png'>",
     qNumber: 7
-
 },
 
 
@@ -100,13 +88,14 @@ $("#start").on("click", function () {
 
 
 //click function that scans the document and recongizes class name 'clickable' and runs the following code within the function. 
-$(document).on("click", '.clickable', function () {
-    userGuess = ($(this).attr('data-id'));
-    console.log('I work');
+$(document).on("click", ".clickable", function () {
+    userGuess = ($(this).attr("data-id"));
     console.log(userGuess);
 
+    var choice = data[index];
+
     //add a comparison to show correct answer
-    if (userGuess === data.Answer) {
+    if (userGuess === choice.Answer) {
         correctAnswers++;
         userGuess = " ";
         $("#root").html("<p>Correct!</p>");
@@ -114,7 +103,7 @@ $(document).on("click", '.clickable', function () {
     } else {
         wrongAnswers++
         userGuess = " ";
-        $("#root").html("<p>Aw, bummer, that's wrong. The Answer is " + data.Answer + "</p>");
+        $("#root").html("<p>Aw, bummer, that's wrong. The Answer is " + choice.Answer + "</p>");
     }
 
 });
@@ -156,7 +145,7 @@ function questionTimer() {
         , 10000);
 }
 
-//displaying my timer, and counting down from 15 seconds. //NEED TO STOP THIS TIMER
+//displaying my timer, and counting down from 15 seconds.
 function startTimer(duration, display) {
     var timer = duration, seconds;
     setInterval(function () {
@@ -177,8 +166,9 @@ jQuery(function ($) {
     startTimer(thirtySecs, display);
 });
 
+//need to stop by startTimer function!!
 function stop() {
-	clearInterval();
+	clearInterval(setInterval);
 }
 stop(startTimer);
 
