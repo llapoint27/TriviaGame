@@ -1,15 +1,13 @@
 //TODO:
 
-//remove spaces and add dashes to object questions
-//fix timer, append timer, if timer hits 0 show "ran out of time" alert
+//if timer hits 0 show "Time's Up!" message
 //append reset button at end of the game and reset
-//get images to show after questons is correct
-
-
+//if function for unanswered questions
+//put timeout when choice/answer is clicked, so you are not waiting 20 seconds for next question
 
 
 //Define variables
-var timeLeft= 10;
+var timeLeft;
 var correctAnswers = 0;
 var wrongAnswers = 0;
 var unanswered = 0;
@@ -27,7 +25,7 @@ var data = [{
     potentialAnswers: ["Rachel", "Ursula", "Becky", "Robin"],
     Answer: 1,
     correctImage: "<img src='./assets/images/q1.gif'>",
-    wrongImage: "<img src='./assets/images/thumbs_down.png'>",
+    wrongImage: "<img class='wrongImage' src='./assets/images/thumbs_down.png'>",
 
 },
 {
@@ -35,7 +33,7 @@ var data = [{
     potentialAnswers: ["roast beef sandwhich", "pepperoni pizza", "hug from Joey", "ordering 2 pizzas at once"],
     Answer: 3,
     correctImage: "<img src='./assets/images/q2.gif'>",
-    wrongImage: "<img src='./assets/images/thumbs_down.png'>",
+    wrongImage: "<img class='wrongImage' src='./assets/images/thumbs_down.png'>",
 
 },
 {
@@ -43,73 +41,69 @@ var data = [{
     potentialAnswers: ["Princess Consuela Bananahammock", "Princess Pheffer Phefferman", "Kitty Kat", "Cindy Crawford"],
     Answer: 0,
     correctImage: "<img src='./assets/images/q3.gif'>",
-    wrongImage: "<img src='./assets/images/thumbs_down.png'>",
+    wrongImage: "<img class='wrongImage' src='./assets/images/thumbs_down.png'>",
 
 },
 
-{
-    question: "How many categories on towels does Monica have?",
-    potentialAnswers: [9, 11, 5, 13],
-    Answer: 1,
-    correctImage: "<img src='./assets/images/q4.gif'>",
-    wrongImage: "<img src='./assets/images/thumbs_down.png'>",
+// {
+//     question: "How many categories of towels does Monica have?",
+//     potentialAnswers: [9, "11", 5, 13],
+//     Answer: 1,
+//     correctImage: "<img src='./assets/images/q4.gif'>",
+//     wrongImage: "<img class='wrongImage' src='./assets/images/thumbs_down.png'>",
+// },
 
-},
+// {
+//     question: "What is Chandler's dad's burlesque show called?",
+//     potentialAnswers: ["Viva Las Gaygas", "It's Raining Men", "Vegas Gaygas", "One Lady Show"],
+//     Answer: 0,
+//     correctImage: "<img src='./assets/images/q5.gif'>",
+//     wrongImage: "<img class='wrongImage' src='./assets/images/thumbs_down.png'>",
+// },
 
-{
-    question: "What is Chandler's dad's burlesque show called?",
-    potentialAnswers: ["Viva Las Gaygas", "It's Raining-Men", "Vegas Gaygas", "One Lady Show"],
-    Answer: 0,
-    correctImage: "<img src='./assets/images/q5.gif'>",
-    wrongImage: "<img src='./assets/images/thumbs_down.png'>",
+// {
+//     question: "Which country does Chandler tell Janice he’s moving to?",
+//     potentialAnswers: ["Turkey", "Brazil", "Yemen", "Bali"],
+//     Answer: 2,
+//     correctImage: "<img src='./assets/images/q6.gif'>",
+//     wrongImage: "<img class='wrongImage' src='./assets/images/thumbs_down.png'>",
+// },
 
-},
+// {
+//     question: "What is Monica’s biggest pet peeve?",
+//     potentialAnswers: ["towels not folded", "unwashed dishes", "being late", "animals dressed as humans"],
+//     Answer: 3,
+//     correctImage: "<img src='./assets/images/q7.gif'>",
+//     wrongImage: "<img class='wrongImage' src='./assets/images/thumbs_down.png'>",
+// },
 
-{
-    question: "Which country does Chandler tell Janice he’s moving to?",
-    potentialAnswers: ["Turkey", "Brazil", "Yemen", "Bali"],
-    Answer: 2,
-    correctImage: "<img src='./assets/images/q6.gif'>",
-    wrongImage: "<img src='./assets/images/thumbs_down.png'>",
+// {
+//     question: "What is the word Ross uses to describe a relaxed mental state?",
+//     potentialAnswers: ["sashimi", "nigiri", "sushi", "unagi"],
+//     Answer: 3,
+//     correctImage: "<img src='./assets/images/q8.gif'>",
+//     wrongImage: "<img class='wrongImage' src='./assets/images/thumbs_down.png'>",
+// },
 
-},
+// {
+//     question: "What fruit is Ross allergic to?",
+//     potentialAnswers: ["watermelon", "oranges", "kiwi", "pineapple"],
+//     Answer: 2,
+//     correctImage: "<img src='./assets/images/q9.gif'>",
+//     wrongImage: "<img class='wrongImage' src='./assets/images/thumbs_down.png'>",
+// },
 
-{
-    question: "What is Monica’s biggest pet peeve?",
-    potentialAnswers: ["towels not folded", "unwashed dishes", "being late", "animals dressed as humans"],
-    Answer: 3,
-    correctImage: "<img src='./assets/images/q7.gif'>",
-    wrongImage: "<img src='./assets/images/thumbs_down.png'>",
-},
-
-{
-    question: "What is the word Ross uses to describe a relaxed mental state?",
-    potentialAnswers: ["sashimi", "nigiri", "sushi", "unagi"],
-    Answer: 3,
-    correctImage: "<img src='./assets/images/q8.gif'>",
-    wrongImage: "<img src='./assets/images/thumbs_down.png'>",
-},
-
-{
-    question: "What fruit is Ross allergic to?",
-    potentialAnswers: ["watermelon", "oranges", "kiwi", "pineapple"],
-    Answer: 2,
-    correctImage: "<img src='./assets/images/q9.gif'>",
-    wrongImage: "<img src='./assets/images/thumbs_down.png'>",
-},
-
-{
-    question: "What is the name of Joey's stuffed animal?",
-    potentialAnswers: ["Morice", "Stuwart", "George", "Robert"],
-    Answer: 0,
-    correctImage: "<img src='./assets/images/q10.gif'>",
-    wrongImage: "<img src='./assets/images/thumbs_down.png'>",
-},
+// {
+//     question: "What is the name of Joey's stuffed animal?",
+//     potentialAnswers: ["Morice", "Stuwart", "George", "Robert"],
+//     Answer: 0,
+//     correctImage: "<img src='./assets/images/q10.gif'>",
+//     wrongImage: "<img class='wrongImage' src='./assets/images/thumbs_down.png'>",
+// },
 
 ];
 
 //click start button to start the game..this is the first thing on the page, and game should start after clicking on "start" with instructions here. Hide when start is clicked.  
-
 
 $("#reset").hide();
 
@@ -118,10 +112,9 @@ $("#start").on("click", function () {
     $("#start").hide();
     $("#instructions").hide();
     displayQuestion(startingIndex);
-    //start timer function
+
 
 });
-
 
 //click function that scans the document and recongizes class name 'clickable' and runs the following code within the function. 
 // $(".clickable").on("click", function() {})
@@ -129,8 +122,6 @@ $("#start").on("click", function () {
 var startingIndex = 0;
 
 $(document).on("click", ".clickable", function () {
-    // clearInterval(timer);
-    // $("#timeLeft").empty();
 
     userGuess = ($(this).attr("data-id"));
     console.log(userGuess);
@@ -145,16 +136,22 @@ $(document).on("click", ".clickable", function () {
         correctAnswers++;
         userGuess = " ";
         $("#root").html("<div><p>Correct!</p><br>" + solution.correctImage + "</div>");
+        $("#timeLeft").empty();
        
     } else {
         wrongAnswers++;
         userGuess = " ";
-        $("#root").html("<div><p>Aw, bummer, that's wrong. The Answer is " + solution.potentialAnswers[solution.Answer] + "</p><br>" + solution.wrongImage + "</div>");
+        $("#root").html("<div><p>Wrong! The Answer is: " + solution.potentialAnswers[solution.Answer] + "</p><br>" + solution.wrongImage + "</div>");
+        $("#timeLeft").empty();
 
     }
     userGuess = 0;
 
+
+
 });
+
+
 
 
 //renderAnswer function creates an list of possible answers on the page. It loops through the index of the answer array.
@@ -179,7 +176,8 @@ function displayQuestion(index) {
     else {
         $('#root').html('<h2>Game Over</h2>');
         $(".container").empty();
-        $(".container").html("<p> Correct Answers: " + correctAnswers + "</p>" + "<br>" + "<p> Wrong Answers: " + wrongAnswers + "</p>");
+        $(".container").html("<p> Correct Answers: " + correctAnswers + "</p>" + "<br>" + "<p> Wrong Answers: " + wrongAnswers + "</p>" + "<p> Unanswered: " + unanswered + "<p>");
+
     }
     $('#root').html(questionTemplate);
 };
@@ -193,12 +191,13 @@ function questionTimer() {
 timeLeft = 5;
 timer = setInterval(function() {
     if(timeLeft === 1) {
-        console.log('time up');
+        // $("#timeLeft").html("Time's Up");
         clearInterval(timer);
         questionChangeTimer();
+
     }
     timeLeft--;
-    $("#timer").html(timeLeft);
+    $("#timer").html("Time Remaining: " + timeLeft);
 }, 1000);
 
 }
@@ -212,17 +211,7 @@ function questionChangeTimer() {
 
 };
 
-// var timeSet = function () {
-//     while (timeLimit > 0) {
-//         setTimeout(function () {
-
-//             $("#timer").html(timeLimit);
-//         }
-//             , 1000)
-//         timeLimit--;
-//         console.log(timeLimit);
-//     }
-// }
+$("#reset").append(startingIndex);
 
 
 
