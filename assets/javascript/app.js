@@ -9,13 +9,15 @@
 
 
 //Define variables
-var timeLeft = 20;
+var timeLeft= 10;
 var correctAnswers = 0;
 var wrongAnswers = 0;
 var unanswered = 0;
 var userTotalTime = 0;
 var userGuess;
 var running = false;
+var timer;
+var postQuestionViewTimer;
 
 
 
@@ -38,7 +40,7 @@ var data = [{
 },
 {
     question: "What does Phoebe change her name to in the final season?",
-    potentialAnswers: ["Princess-Consuela-Bananahammock", "Princess-Pheffer-Phefferman", "Kitty-Kat", "Cindy-Crawford"],
+    potentialAnswers: ["Princess Consuela Bananahammock", "Princess Pheffer Phefferman", "Kitty Kat", "Cindy Crawford"],
     Answer: 0,
     correctImage: "<img src='./assets/images/q3.gif'>",
     wrongImage: "<img src='./assets/images/thumbs_down.png'>",
@@ -48,7 +50,7 @@ var data = [{
 {
     question: "How many categories on towels does Monica have?",
     potentialAnswers: [9, 11, 5, 13],
-    Answer: 0,
+    Answer: 1,
     correctImage: "<img src='./assets/images/q4.gif'>",
     wrongImage: "<img src='./assets/images/thumbs_down.png'>",
 
@@ -56,8 +58,8 @@ var data = [{
 
 {
     question: "What is Chandler's dad's burlesque show called?",
-    potentialAnswers: ["Viva-Las-Gaygas", "It's-Raining-Men", "Vegas-Gaygas", "One-Lady-Show"],
-    Answer: 1,
+    potentialAnswers: ["Viva Las Gaygas", "It's Raining-Men", "Vegas Gaygas", "One Lady Show"],
+    Answer: 0,
     correctImage: "<img src='./assets/images/q5.gif'>",
     wrongImage: "<img src='./assets/images/thumbs_down.png'>",
 
@@ -74,11 +76,10 @@ var data = [{
 
 {
     question: "What is Monica’s biggest pet peeve?",
-    potentialAnswers: ["her-towels-not-folded", "unwashed-dishes", "being-late", "aimals-dressed-as-humans"],
-    Answer: 2,
+    potentialAnswers: ["towels not folded", "unwashed dishes", "being late", "animals dressed as humans"],
+    Answer: 3,
     correctImage: "<img src='./assets/images/q7.gif'>",
     wrongImage: "<img src='./assets/images/thumbs_down.png'>",
-    qNumber: 7
 },
 
 {
@@ -87,7 +88,6 @@ var data = [{
     Answer: 3,
     correctImage: "<img src='./assets/images/q8.gif'>",
     wrongImage: "<img src='./assets/images/thumbs_down.png'>",
- 
 },
 
 {
@@ -96,7 +96,6 @@ var data = [{
     Answer: 2,
     correctImage: "<img src='./assets/images/q9.gif'>",
     wrongImage: "<img src='./assets/images/thumbs_down.png'>",
-
 },
 
 {
@@ -105,7 +104,6 @@ var data = [{
     Answer: 0,
     correctImage: "<img src='./assets/images/q10.gif'>",
     wrongImage: "<img src='./assets/images/thumbs_down.png'>",
-
 },
 
 ];
@@ -118,6 +116,7 @@ $("#reset").hide();
 //click start button to start game
 $("#start").on("click", function () {
     $("#start").hide();
+    $("#instructions").hide();
     displayQuestion(startingIndex);
     //start timer function
 
@@ -130,6 +129,9 @@ $("#start").on("click", function () {
 var startingIndex = 0;
 
 $(document).on("click", ".clickable", function () {
+    // clearInterval(timer);
+    // $("#timeLeft").empty();
+
     userGuess = ($(this).attr("data-id"));
     console.log(userGuess);
 
@@ -156,14 +158,14 @@ $(document).on("click", ".clickable", function () {
 
 
 //renderAnswer function creates an list of possible answers on the page. It loops through the index of the answer array.
-
 function renderAnswers(index) {
     var liElements = " ";
     for (var i = 0; i < data[index].potentialAnswers.length; i++) {
         var res = data[index].potentialAnswers[i];
-        liElements += '<li data-id=' + res + ' class="clickable">' + res + '</li>';
+        liElements += '<li data-id="' + res + '" class="clickable">' + res + '</li>';
 
     }
+    console.log('Here are the elements', liElements);
     return liElements;
 };
 
@@ -184,13 +186,11 @@ function displayQuestion(index) {
 //quality check, prevents from moving on to the next question
 function doWeKeepPlaying(index) {
     return data.length === index
-       
 }
 
 
-var timer;
 function questionTimer() {
-timeLeft = 10;
+timeLeft = 5;
 timer = setInterval(function() {
     if(timeLeft === 1) {
         console.log('time up');
@@ -201,15 +201,14 @@ timer = setInterval(function() {
     $("#timer").html(timeLeft);
 }, 1000);
 
-
 }
-var postQuestionViewTimer;
+
 function questionChangeTimer() {
     postQuestionViewTimer = setTimeout(function () {
         clearInterval(timer);
         startingIndex++;
         displayQuestion(startingIndex);    
-    }, 5000);
+    }, 2000);
 
 };
 
