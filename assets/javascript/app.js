@@ -1,11 +1,15 @@
 //TODO:
-//remove spaces and add dashes to objects above******
+
+//remove spaces and add dashes to object questions
+//fix timer, append timer, if timer hits 0 show "ran out of time" alert
+//append reset button at end of the game and reset
+//get images to show after questons is correct
 
 
 
 
 //Define variables
-var timeLimit = 5;
+var timeLeft = 20;
 var correctAnswers = 0;
 var wrongAnswers = 0;
 var unanswered = 0;
@@ -22,87 +26,87 @@ var data = [{
     Answer: 1,
     correctImage: "<img src='./assets/images/q1.gif'>",
     wrongImage: "<img src='./assets/images/thumbs_down.png'>",
-    qNumber: 1
+
 },
 {
     question: "What is the 'Joey special'?",
-    potentialAnswers: ["roast beef sandwhich", "pepperoni pizza", "hug from Joey", "ordering-2-pizzas-at-once"],
+    potentialAnswers: ["roast beef sandwhich", "pepperoni pizza", "hug from Joey", "ordering 2 pizzas at once"],
     Answer: 3,
     correctImage: "<img src='./assets/images/q2.gif'>",
     wrongImage: "<img src='./assets/images/thumbs_down.png'>",
-    qNumber: 2
+
 },
 {
     question: "What does Phoebe change her name to in the final season?",
-    potentialAnswers: ["Princess Consuela Bananahammock", "Princess Pheffer Phefferman", "Kitty Kat", "Cindy Crawford"],
+    potentialAnswers: ["Princess-Consuela-Bananahammock", "Princess-Pheffer-Phefferman", "Kitty-Kat", "Cindy-Crawford"],
     Answer: 0,
     correctImage: "<img src='./assets/images/q3.gif'>",
     wrongImage: "<img src='./assets/images/thumbs_down.png'>",
-    qNumber: 3
+
 },
 
-// {
-//     question: "How many categories on towels does Monica have?",
-//     potentialAnswers: [9, 11, 5, 13],
-//     Answer: 0,
-//     correctImage: "<img src='./assets/images/q4.gif'>",
-//     wrongImage: "<img src='./assets/images/thumbs_down.png'>",
-//     qNumber: 4
-// },
+{
+    question: "How many categories on towels does Monica have?",
+    potentialAnswers: [9, 11, 5, 13],
+    Answer: 0,
+    correctImage: "<img src='./assets/images/q4.gif'>",
+    wrongImage: "<img src='./assets/images/thumbs_down.png'>",
 
-// {
-//     question: "What is Chandler's dad's burlesque show called?",
-//     potentialAnswers: ["Viva Las Gaygas", "It's Raining Men", "Vegas Gaygas", "One Lady Show"],
-//     Answer: 1,
-//     correctImage: "<img src='./assets/images/q5.gif'>",
-//     wrongImage: "<img src='./assets/images/thumbs_down.png'>",
-//     qNumber: 5
-// },
+},
 
-// {
-//     question: "Which country does Chandler tell Janice he’s moving to?",
-//     potentialAnswers: ["Turkey", "Brazil", "Yemen", "Bali"],
-//     Answer: 2,
-//     correctImage: "<img src='./assets/images/q6.gif'>",
-//     wrongImage: "<img src='./assets/images/thumbs_down.png'>",
-//     qNumber: 6
-// },
+{
+    question: "What is Chandler's dad's burlesque show called?",
+    potentialAnswers: ["Viva-Las-Gaygas", "It's-Raining-Men", "Vegas-Gaygas", "One-Lady-Show"],
+    Answer: 1,
+    correctImage: "<img src='./assets/images/q5.gif'>",
+    wrongImage: "<img src='./assets/images/thumbs_down.png'>",
 
-// {
-//     question: "What is Monica’s biggest pet peeve?",
-//     potentialAnswers: ["her towels not folded", "unwashed dishes", "being late", "aimals dressed as humans"],
-//     Answer: 2,
-//     correctImage: "<img src='./assets/images/q7.gif'>",
-//     wrongImage: "<img src='./assets/images/thumbs_down.png'>",
-//     qNumber: 7
-// },
+},
 
-// {
-//     question: "What is the word Ross uses to describe a relaxed mental state?",
-//     potentialAnswers: ["sashimi", "nigiri", "sushi", "unagi"],
-//     Answer: 3,
-//     correctImage: "<img src='./assets/images/q8.gif'>",
-//     wrongImage: "<img src='./assets/images/thumbs_down.png'>",
-//     qNumber: 8
-// },
+{
+    question: "Which country does Chandler tell Janice he’s moving to?",
+    potentialAnswers: ["Turkey", "Brazil", "Yemen", "Bali"],
+    Answer: 2,
+    correctImage: "<img src='./assets/images/q6.gif'>",
+    wrongImage: "<img src='./assets/images/thumbs_down.png'>",
 
-// {
-//     question: "What fruit is Ross allergic to?",
-//     potentialAnswers: ["watermelon", "oranges", "kiwi", "pineapple"],
-//     Answer: 2,
-//     correctImage: "<img src='./assets/images/q9.gif'>",
-//     wrongImage: "<img src='./assets/images/thumbs_down.png'>",
-//     qNumber: 9
-// },
+},
 
-// {
-//     question: "What is the name of Joey's stuffed animal?",
-//     potentialAnswers: ["Morice", "Stuwart", "George", "Robert"],
-//     Answer: 0,
-//     correctImage: "<img src='./assets/images/q10.gif'>",
-//     wrongImage: "<img src='./assets/images/thumbs_down.png'>",
-//     qNumber: 10
-// },
+{
+    question: "What is Monica’s biggest pet peeve?",
+    potentialAnswers: ["her-towels-not-folded", "unwashed-dishes", "being-late", "aimals-dressed-as-humans"],
+    Answer: 2,
+    correctImage: "<img src='./assets/images/q7.gif'>",
+    wrongImage: "<img src='./assets/images/thumbs_down.png'>",
+    qNumber: 7
+},
+
+{
+    question: "What is the word Ross uses to describe a relaxed mental state?",
+    potentialAnswers: ["sashimi", "nigiri", "sushi", "unagi"],
+    Answer: 3,
+    correctImage: "<img src='./assets/images/q8.gif'>",
+    wrongImage: "<img src='./assets/images/thumbs_down.png'>",
+ 
+},
+
+{
+    question: "What fruit is Ross allergic to?",
+    potentialAnswers: ["watermelon", "oranges", "kiwi", "pineapple"],
+    Answer: 2,
+    correctImage: "<img src='./assets/images/q9.gif'>",
+    wrongImage: "<img src='./assets/images/thumbs_down.png'>",
+
+},
+
+{
+    question: "What is the name of Joey's stuffed animal?",
+    potentialAnswers: ["Morice", "Stuwart", "George", "Robert"],
+    Answer: 0,
+    correctImage: "<img src='./assets/images/q10.gif'>",
+    wrongImage: "<img src='./assets/images/thumbs_down.png'>",
+
+},
 
 ];
 
@@ -126,7 +130,6 @@ $("#start").on("click", function () {
 var startingIndex = 0;
 
 $(document).on("click", ".clickable", function () {
-
     userGuess = ($(this).attr("data-id"));
     console.log(userGuess);
 
@@ -135,15 +138,17 @@ $(document).on("click", ".clickable", function () {
 
     //add a comparison to show correct answer
     console.log(data[startingIndex].Answer)
-    if (choice === data[startingIndex].Answer) {
+    var solution = data[startingIndex];
+    if (choice === solution.Answer) {
         correctAnswers++;
         userGuess = " ";
-        $("#root").html("<p>Correct!</p>");
-
+        $("#root").html("<div><p>Correct!</p><br>" + solution.correctImage + "</div>");
+       
     } else {
-        wrongAnswers++
+        wrongAnswers++;
         userGuess = " ";
-        $("#root").html("<p>Aw, bummer, that's wrong. The Answer is " + choice.Answer + "</p>");
+        $("#root").html("<div><p>Aw, bummer, that's wrong. The Answer is " + solution.potentialAnswers[solution.Answer] + "</p><br>" + solution.wrongImage + "</div>");
+
     }
     userGuess = 0;
 
@@ -155,8 +160,8 @@ $(document).on("click", ".clickable", function () {
 function renderAnswers(index) {
     var liElements = " ";
     for (var i = 0; i < data[index].potentialAnswers.length; i++) {
-        var res = data[index].potentialAnswers[i].replace(/-/g, " ");
-        liElements += '<li data-id=' + data[index].potentialAnswers[i] + ' class="clickable">' + res + '</li>';
+        var res = data[index].potentialAnswers[i];
+        liElements += '<li data-id=' + res + ' class="clickable">' + res + '</li>';
 
     }
     return liElements;
@@ -164,6 +169,7 @@ function renderAnswers(index) {
 
 
 function displayQuestion(index) {
+    clearTimeout(postQuestionViewTimer);
     if (!doWeKeepPlaying(index)) {
         var questionTemplate = "<div class='parent'><h3>" + data[index].question + "</h3><ul>" + renderAnswers(index) + "</ul></div>";
         questionTimer();
@@ -182,38 +188,42 @@ function doWeKeepPlaying(index) {
 }
 
 
-
+var timer;
 function questionTimer() {
-    timeSet();
+timeLeft = 10;
+timer = setInterval(function() {
+    if(timeLeft === 1) {
+        console.log('time up');
+        clearInterval(timer);
+        questionChangeTimer();
+    }
+    timeLeft--;
+    $("#timer").html(timeLeft);
+}, 1000);
 
-    // setTimeout(function () {
-    //     timeLimit--
-    //     $("#timer").html(timeLimit);
-    // }
-    // , 1000)
 
-    setTimeout(function () {
-        clearTimeout(questionTimer);
+}
+var postQuestionViewTimer;
+function questionChangeTimer() {
+    postQuestionViewTimer = setTimeout(function () {
+        clearInterval(timer);
         startingIndex++;
-        displayQuestion(startingIndex);
-        timeLimit = 5;
-    }
-        , 5000);
+        displayQuestion(startingIndex);    
+    }, 5000);
 
-    // timeSet();
-}
+};
 
-var timeSet = function () {
-    while (timeLimit > 0) {
-        setTimeout(function () {
+// var timeSet = function () {
+//     while (timeLimit > 0) {
+//         setTimeout(function () {
 
-            $("#timer").html(timeLimit);
-        }
-            , 1000)
-        timeLimit--;
-        console.log(timeLimit);
-    }
-}
+//             $("#timer").html(timeLimit);
+//         }
+//             , 1000)
+//         timeLimit--;
+//         console.log(timeLimit);
+//     }
+// }
 
 
 

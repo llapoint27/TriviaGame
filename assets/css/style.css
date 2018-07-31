@@ -12,8 +12,6 @@
     text-align: center;
     background-color: #777;
     border: 8px solid black;
-    opacity: .60;
-    filter: alpha(opacity=50);
     width: 600px;
     height: 400px;
     border-radius: 25px;
@@ -34,6 +32,10 @@ h1 {
 
 }
 
+h3 {
+    color: pink;
+}
+
 .parent {
     font-size: 20px;
     color: white;
@@ -50,6 +52,18 @@ li:hover {
 
 .clickable {
     list-style-type: none;
+
+}
+
+p, #timeLeft {
+    font-size: 20px;
+    color: white;
+}
+
+#start {
+    padding: 20px;
+    font-size: 20px;
+    color: white;
 
 }
 
