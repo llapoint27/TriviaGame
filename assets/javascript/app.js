@@ -27,22 +27,22 @@ var data = [{
     wrongImage: "<img class='wrongImage' src='./assets/images/thumbs_down.png'>",
 
 },
-// {
-//     question: "What is the 'Joey Special'?",
-//     potentialAnswers: ["roast beef sandwhich", "pepperoni pizza", "hug from Joey", "ordering 2 pizzas at once"],
-//     Answer: 3,
-//     correctImage: "<img src='./assets/images/q2.gif'>",
-//     wrongImage: "<img class='wrongImage' src='./assets/images/thumbs_down.png'>",
+{
+    question: "What is the 'Joey Special'?",
+    potentialAnswers: ["roast beef sandwhich", "pepperoni pizza", "hug from Joey", "ordering 2 pizzas at once"],
+    Answer: 3,
+    correctImage: "<img src='./assets/images/q2.gif'>",
+    wrongImage: "<img class='wrongImage' src='./assets/images/thumbs_down.png'>",
 
-// },
-// {
-//     question: "What does Phoebe change her name to in the final season?",
-//     potentialAnswers: ["Princess Consuela Bananahammock", "Princess Pheffer Phefferman", "Kitty Kat", "Cindy Crawford"],
-//     Answer: 0,
-//     correctImage: "<img src='./assets/images/q3.gif'>",
-//     wrongImage: "<img class='wrongImage' src='./assets/images/thumbs_down.png'>",
+},
+{
+    question: "What does Phoebe change her name to in the final season?",
+    potentialAnswers: ["Princess Consuela Bananahammock", "Princess Pheffer Phefferman", "Kitty Kat", "Cindy Crawford"],
+    Answer: 0,
+    correctImage: "<img src='./assets/images/q3.gif'>",
+    wrongImage: "<img class='wrongImage' src='./assets/images/thumbs_down.png'>",
 
-// },
+},
 
 // {
 //     question: "How many categories of towels does Monica have?",
@@ -135,16 +135,14 @@ $(document).on("click", ".clickable", function () {
         correctAnswers++;
         userGuess = "";
         $("#root").html("<div><p>Correct!</p><br>" + solution.correctImage + "</div>");
-        // $("#timeLeft").empty();
-        // questionChangeTimer()
-        clearTimeout(postQuestionViewTimer)
+        clearInterval()
+       
        
     } else {
         wrongAnswers++;
         userGuess = " ";
         $("#root").html("<div><p>Wrong! The Answer is: " + solution.potentialAnswers[solution.Answer] + "</p><br>" + solution.wrongImage + "</div>");
-        // $("#timeLeft").empty();
-        // questionChangeTimer()
+
 
     }
     userGuess = 0;
@@ -175,8 +173,14 @@ function displayQuestion(index) {
     else {
         $('#root').html('<h2>Game Over</h2>');
         $(".container").empty();
-        $(".container").html("<p> Correct Answers: " + correctAnswers + "</p>" +  "<p> Wrong Answers: " + wrongAnswers + "</p>" + "<p> Unanswered: " + unanswered + "<p>");
-        $("#reset").html("<btn>");
+        $(".container").html("<p>All done! Your results: " + "<p> Correct Answers: " + correctAnswers + "</p>" +  "<p> Wrong Answers: " + wrongAnswers + "</p>" + "<p> Unanswered: " + unanswered + "<p>");
+        $("#reset").show();
+
+        $("#reset").on("click", function () {
+            $("#reset").hide();
+            displayQuestion(startingIndex);
+        
+        });
 
     }
     $('#root').html(questionTemplate);
@@ -189,10 +193,9 @@ function doWeKeepPlaying(index) {
 
 
 function questionTimer() {
-timeLeft = 5;
+timeLeft = 10;
 timer = setInterval(function() {
     if(timeLeft === 1) {
-        // $("#timeLeft").html("Time's Up");
         clearInterval(timer);
         questionChangeTimer();
 
@@ -212,12 +215,12 @@ function questionChangeTimer() {
 
 };
 
-$("#reset").on("click", function () {
-    $("#reset").hide();
-    displayQuestion(startingIndex);
 
+// $("#reset").on("click", function () {
+//     $("#reset").hide();
+//     displayQuestion(startingIndex);
 
-});
+// });
 
 
 
