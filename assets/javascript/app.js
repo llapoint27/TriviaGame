@@ -13,7 +13,6 @@ var wrongAnswers = 0;
 var unanswered = 0;
 var userTotalTime = 0;
 var userGuess;
-var running = false;
 var timer;
 var postQuestionViewTimer;
 
@@ -28,22 +27,22 @@ var data = [{
     wrongImage: "<img class='wrongImage' src='./assets/images/thumbs_down.png'>",
 
 },
-{
-    question: "What is the 'Joey special'?",
-    potentialAnswers: ["roast beef sandwhich", "pepperoni pizza", "hug from Joey", "ordering 2 pizzas at once"],
-    Answer: 3,
-    correctImage: "<img src='./assets/images/q2.gif'>",
-    wrongImage: "<img class='wrongImage' src='./assets/images/thumbs_down.png'>",
+// {
+//     question: "What is the 'Joey Special'?",
+//     potentialAnswers: ["roast beef sandwhich", "pepperoni pizza", "hug from Joey", "ordering 2 pizzas at once"],
+//     Answer: 3,
+//     correctImage: "<img src='./assets/images/q2.gif'>",
+//     wrongImage: "<img class='wrongImage' src='./assets/images/thumbs_down.png'>",
 
-},
-{
-    question: "What does Phoebe change her name to in the final season?",
-    potentialAnswers: ["Princess Consuela Bananahammock", "Princess Pheffer Phefferman", "Kitty Kat", "Cindy Crawford"],
-    Answer: 0,
-    correctImage: "<img src='./assets/images/q3.gif'>",
-    wrongImage: "<img class='wrongImage' src='./assets/images/thumbs_down.png'>",
+// },
+// {
+//     question: "What does Phoebe change her name to in the final season?",
+//     potentialAnswers: ["Princess Consuela Bananahammock", "Princess Pheffer Phefferman", "Kitty Kat", "Cindy Crawford"],
+//     Answer: 0,
+//     correctImage: "<img src='./assets/images/q3.gif'>",
+//     wrongImage: "<img class='wrongImage' src='./assets/images/thumbs_down.png'>",
 
-},
+// },
 
 // {
 //     question: "How many categories of towels does Monica have?",
@@ -134,15 +133,18 @@ $(document).on("click", ".clickable", function () {
     var solution = data[startingIndex];
     if (choice === solution.Answer) {
         correctAnswers++;
-        userGuess = " ";
+        userGuess = "";
         $("#root").html("<div><p>Correct!</p><br>" + solution.correctImage + "</div>");
-        $("#timeLeft").empty();
+        // $("#timeLeft").empty();
+        // questionChangeTimer()
+        clearTimeout(postQuestionViewTimer)
        
     } else {
         wrongAnswers++;
         userGuess = " ";
         $("#root").html("<div><p>Wrong! The Answer is: " + solution.potentialAnswers[solution.Answer] + "</p><br>" + solution.wrongImage + "</div>");
-        $("#timeLeft").empty();
+        // $("#timeLeft").empty();
+        // questionChangeTimer()
 
     }
     userGuess = 0;
@@ -152,15 +154,12 @@ $(document).on("click", ".clickable", function () {
 });
 
 
-
-
 //renderAnswer function creates an list of possible answers on the page. It loops through the index of the answer array.
 function renderAnswers(index) {
     var liElements = " ";
     for (var i = 0; i < data[index].potentialAnswers.length; i++) {
         var res = data[index].potentialAnswers[i];
         liElements += '<li data-id="' + res + '" class="clickable">' + res + '</li>';
-
     }
     console.log('Here are the elements', liElements);
     return liElements;
@@ -176,7 +175,8 @@ function displayQuestion(index) {
     else {
         $('#root').html('<h2>Game Over</h2>');
         $(".container").empty();
-        $(".container").html("<p> Correct Answers: " + correctAnswers + "</p>" + "<br>" + "<p> Wrong Answers: " + wrongAnswers + "</p>" + "<p> Unanswered: " + unanswered + "<p>");
+        $(".container").html("<p> Correct Answers: " + correctAnswers + "</p>" +  "<p> Wrong Answers: " + wrongAnswers + "</p>" + "<p> Unanswered: " + unanswered + "<p>");
+        $("#reset").html("<btn>");
 
     }
     $('#root').html(questionTemplate);
@@ -184,6 +184,7 @@ function displayQuestion(index) {
 //quality check, prevents from moving on to the next question
 function doWeKeepPlaying(index) {
     return data.length === index
+
 }
 
 
@@ -211,7 +212,12 @@ function questionChangeTimer() {
 
 };
 
-$("#reset").append(startingIndex);
+$("#reset").on("click", function () {
+    $("#reset").hide();
+    displayQuestion(startingIndex);
+
+
+});
 
 
 
