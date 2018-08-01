@@ -141,6 +141,84 @@ $(document).on("click", ".clickable", function () {
     userGuess = 0;
 
 
+
+    function renderAnswers(index) {
+    var liElements = " ";
+    for (var i = 0; i < data[index].potentialAnswers.length; i++) {
+        var res = data[index].potentialAnswers[i];
+        liElements += '<li data-id="' + res + '" class="clickable">' + res + '</li>';
+    }
+    console.log('Here are the elements', liElements);
+    return liElements;
+};
+
+//function that displays the question (question template)
+function displayQuestion(index) {
+    clearTimeout(postQuestionViewTimer);
+    if (!doWeKeepPlaying(index)) {
+        var questionTemplate = "<div class='parent'><h3>" + data[index].question + "</h3><ul>" + renderAnswers(index) + "</ul></div>";
+        questionTimer();
+    }
+
+    else {
+        // $(".container").empty();
+        $(".container").html("<p>Game over! Your results: " + "<p> Correct Answers: " + correctAnswers + "</p>" + "<p> Wrong Answers: " + wrongAnswers + "</p>" + "<p> Unanswered: " + unanswered + "<p>" +
+            "<button id='reset'>Play Again!</button>");
+
+        console.log($("#reset"));
+
+        //   $("#reset").show();
+        $("#reset").on("click", function () {
+            console.log("i'm here")
+            $("#reset").hide();
+            $("#instructions").hide();
+            displayQuestion(startingIndex);
+
+            questionChangeTimer();
+
+        });
+
+
+
+
+    }
+
+    $('#root').html(questionTemplate);
+
+};
+
+//quality check, function to run through full index of questions
+function doWeKeepPlaying(index) {
+    return data.length === index
+
+}
+
+//each question will run a timer of 15 seconds
+function questionTimer() {
+    timeLeft = 3;
+    timer = setInterval(function () {
+        if (timeLeft === 1) {
+            clearInterval(timer);
+            questionChangeTimer();
+            $("#timer").html("Time's up!");
+
+        }
+        timeLeft--;
+        $("#timer").html("Time Remaining: " + timeLeft);
+    }, 1000);
+
+}
+
+//there will be 2 seconds between each question
+function questionChangeTimer() {
+    postQuestionViewTimer = setTimeout(function () {
+        clearInterval(timer);
+        startingIndex++;
+        displayQuestion(startingIndex);
+    }, 2000);
+
+};
+
 });
 
 //renderAnswer function creates an list of possible answers on the page. It loops through the index of the answer array.
