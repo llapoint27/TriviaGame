@@ -160,12 +160,11 @@ function displayQuestion(index) {
         var questionTemplate = "<div class='parent'><h3>" + data[index].question + "</h3><ul>" + renderAnswers(index) + "</ul></div>";
         questionTimer();
     }
-    else {
-        $("#reset").show()
-        $(".container").empty();
-        $(".container").html("<p>All done! Your results: " + "<p> Correct Answers: " + correctAnswers + "</p>" +  "<p> Wrong Answers: " + wrongAnswers + "</p>" + "<p> Unanswered: " + unanswered + "<p>");
 
-     
+    else {
+        $(".container").empty();
+        $(".container").html("<p>Game over! Your results: " + "<p> Correct Answers: " + correctAnswers + "</p>" +  "<p> Wrong Answers: " + wrongAnswers + "</p>" + "<p> Unanswered: " + unanswered + "<p>" + "<button>" + $("#reset").show() + "</button>");
+
         //my intention is to show the reset button here
         // $("#reset").show();
        
