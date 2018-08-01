@@ -2,6 +2,8 @@
 //append reset button at end of the game and reset
 //if function for unanswered questions
 
+//I am having a scoping issue that is preventing my 'play again' button from clicking. I need to put everything in the document.onclick function to remove the scoping issue//
+
 //Define variables
 var timeLeft;
 var correctAnswers = 0;
@@ -29,69 +31,69 @@ var data = [{
     wrongImage: "<img class='wrongImage' src='./assets/images/thumbs_down.png'>",
 
 },
-    // {
-    //     question: "What does Phoebe change her name to in the final season?",
-    //     potentialAnswers: ["Princess Consuela Bananahammock", "Princess Pheffer Phefferman", "Kitty Kat", "Cindy Crawford"],
-    //     Answer: 0,
-    //     correctImage: "<img src='./assets/images/q3.gif'>",
-    //     wrongImage: "<img class='wrongImage' src='./assets/images/thumbs_down.png'>",
-    // },
+    {
+        question: "What does Phoebe change her name to in the final season?",
+        potentialAnswers: ["Princess Consuela Bananahammock", "Princess Pheffer Phefferman", "Kitty Kat", "Cindy Crawford"],
+        Answer: 0,
+        correctImage: "<img src='./assets/images/q3.gif'>",
+        wrongImage: "<img class='wrongImage' src='./assets/images/thumbs_down.png'>",
+    },
 
-    // {
-    //     question: "How many categories of towels does Monica have?",
-    //     potentialAnswers: [9, "11", 5, 13],
-    //     Answer: 1,
-    //     correctImage: "<img src='./assets/images/q4.gif'>",
-    //     wrongImage: "<img class='wrongImage' src='./assets/images/thumbs_down.png'>",
-    // },
+    {
+        question: "How many categories of towels does Monica have?",
+        potentialAnswers: [9, "11", 5, 13],
+        Answer: 1,
+        correctImage: "<img src='./assets/images/q4.gif'>",
+        wrongImage: "<img class='wrongImage' src='./assets/images/thumbs_down.png'>",
+    },
 
-    // {
-    //     question: "What is Chandler's dad's burlesque show called?",
-    //     potentialAnswers: ["Viva Las Gaygas", "It's Raining Men", "Vegas Gaygas", "One Lady Show"],
-    //     Answer: 0,
-    //     correctImage: "<img src='./assets/images/q5.gif'>",
-    //     wrongImage: "<img class='wrongImage' src='./assets/images/thumbs_down.png'>",
-    // },
+    {
+        question: "What is Chandler's dad's burlesque show called?",
+        potentialAnswers: ["Viva Las Gaygas", "It's Raining Men", "Vegas Gaygas", "One Lady Show"],
+        Answer: 0,
+        correctImage: "<img src='./assets/images/q5.gif'>",
+        wrongImage: "<img class='wrongImage' src='./assets/images/thumbs_down.png'>",
+    },
 
-    // {
-    //     question: "Which country does Chandler tell Janice he’s moving to?",
-    //     potentialAnswers: ["Turkey", "Brazil", "Yemen", "Bali"],
-    //     Answer: 2,
-    //     correctImage: "<img src='./assets/images/q6.gif'>",
-    //     wrongImage: "<img class='wrongImage' src='./assets/images/thumbs_down.png'>",
-    // },
+    {
+        question: "Which country does Chandler tell Janice he’s moving to?",
+        potentialAnswers: ["Turkey", "Brazil", "Yemen", "Bali"],
+        Answer: 2,
+        correctImage: "<img src='./assets/images/q6.gif'>",
+        wrongImage: "<img class='wrongImage' src='./assets/images/thumbs_down.png'>",
+    },
 
-    // {
-    //     question: "What is Monica’s biggest pet peeve?",
-    //     potentialAnswers: ["towels not folded", "unwashed dishes", "being late", "animals dressed as humans"],
-    //     Answer: 3,
-    //     correctImage: "<img src='./assets/images/q7.gif'>",
-    //     wrongImage: "<img class='wrongImage' src='./assets/images/thumbs_down.png'>",
-    // },
+    {
+        question: "What is Monica’s biggest pet peeve?",
+        potentialAnswers: ["towels not folded", "unwashed dishes", "being late", "animals dressed as humans"],
+        Answer: 3,
+        correctImage: "<img src='./assets/images/q7.gif'>",
+        wrongImage: "<img class='wrongImage' src='./assets/images/thumbs_down.png'>",
+    },
 
-    // {
-    //     question: "What is the word Ross uses to describe a relaxed mental state?",
-    //     potentialAnswers: ["sashimi", "nigiri", "sushi", "unagi"],
-    //     Answer: 3,
-    //     correctImage: "<img src='./assets/images/q8.gif'>",
-    //     wrongImage: "<img class='wrongImage' src='./assets/images/thumbs_down.png'>",
-    // },
+    {
+        question: "What is the word Ross uses to describe a relaxed mental state?",
+        potentialAnswers: ["sashimi", "nigiri", "sushi", "unagi"],
+        Answer: 3,
+        correctImage: "<img src='./assets/images/q8.gif'>",
+        wrongImage: "<img class='wrongImage' src='./assets/images/thumbs_down.png'>",
+    },
 
-    // {
-    //     question: "What fruit is Ross allergic to?",
-    //     potentialAnswers: ["watermelon", "oranges", "kiwi", "pineapple"],
-    //     Answer: 2,
-    //     correctImage: "<img src='./assets/images/q9.gif'>",
-    //     wrongImage: "<img class='wrongImage' src='./assets/images/thumbs_down.png'>",
-    // },
+    {
+        question: "What fruit is Ross allergic to?",
+        potentialAnswers: ["watermelon", "oranges", "kiwi", "pineapple"],
+        Answer: 2,
+        correctImage: "<img src='./assets/images/q9.gif'>",
+        wrongImage: "<img class='wrongImage' src='./assets/images/thumbs_down.png'>",
+    },
 
-    // {
-    //     question: "What is the name of Joey's stuffed animal?",
-    //     potentialAnswers: ["Morice", "Stuwart", "George", "Robert"],
-    //     Answer: 0,
-    //     correctImage: "<img src='./assets/images/q10.gif'>",
-    //     wrongImage: "<img class='wrongImage' src='./assets/images/thumbs_down.png'>",
-    // },
+    {
+        question: "What is the name of Joey's stuffed animal?",
+        potentialAnswers: ["Morice", "Stuwart", "George", "Robert"],
+        Answer: 0,
+        correctImage: "<img src='./assets/images/q10.gif'>",
+        wrongImage: "<img class='wrongImage' src='./assets/images/thumbs_down.png'>",
+    },
 
 ];
 
@@ -165,22 +167,17 @@ function displayQuestion(index) {
         $(".container").html("<p>Game over! Your results: " + "<p> Correct Answers: " + correctAnswers + "</p>" + "<p> Wrong Answers: " + wrongAnswers + "</p>" + "<p> Unanswered: " + unanswered + "<p>" +
             "<button id='reset'>Play Again!</button>");
 
-        // var resetButton = $("<button id='reset'>Play Again!</button>");
-        // //my intention is to show the reset button here
-        // $("#resetContainer").append(resetButton);
         console.log($("#reset"));
 
         //   $("#reset").show();
-
-
         $("#reset").on("click", function () {
             console.log("i'm here")
             $("#reset").hide();
             $("#instructions").hide();
             displayQuestion(startingIndex);
-    
+
             questionChangeTimer();
-    
+
         });
 
 
@@ -225,17 +222,17 @@ function questionChangeTimer() {
 };
 
 //reset button to reset the game
-console.log()
+// console.log()
 
-$("#reset").on("click", function () {
-    console.log("i'm here")
-    $("#reset").hide();
-    $("#instructions").hide();
-    displayQuestion(startingIndex);
+// $("#reset").on("click", function () {
+//     console.log("i'm here")
+//     $("#reset").hide();
+//     $("#instructions").hide();
+//     displayQuestion(startingIndex);
 
-    questionChangeTimer();
+//     questionChangeTimer();
 
-});
+// });
 
 
 
