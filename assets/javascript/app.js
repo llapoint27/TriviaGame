@@ -1,10 +1,7 @@
 //TODO:
-
 //if timer hits 0 show "Time's Up!" message
 //append reset button at end of the game and reset
 //if function for unanswered questions
-//put timeout when choice/answer is clicked, so you are not waiting 20 seconds for next question
-
 
 //Define variables
 var timeLeft;
@@ -16,9 +13,7 @@ var userGuess;
 var timer;
 var postQuestionViewTimer;
 
-
-
-//Created the varible 'data' to store each question as an object. Each object will hold the question, array of answers, correct answer, and correct image and image letting you know answer is incorrect. 
+//This var 'data' stores each question as an object. Each object will hold the question, array of potential answers, correct answer, and correct image and image letting you know answer is incorrect. 
 var data = [{
     question: "What is Pheobe's twin sister's name",
     potentialAnswers: ["Rachel", "Ursula", "Becky", "Robin"],
@@ -27,22 +22,21 @@ var data = [{
     wrongImage: "<img class='wrongImage' src='./assets/images/thumbs_down.png'>",
 
 },
-{
-    question: "What is the 'Joey Special'?",
-    potentialAnswers: ["roast beef sandwhich", "pepperoni pizza", "hug from Joey", "ordering 2 pizzas at once"],
-    Answer: 3,
-    correctImage: "<img src='./assets/images/q2.gif'>",
-    wrongImage: "<img class='wrongImage' src='./assets/images/thumbs_down.png'>",
+// {
+//     question: "What is the 'Joey Special'?",
+//     potentialAnswers: ["roast beef sandwhich", "pepperoni pizza", "hug from Joey", "ordering 2 pizzas at once"],
+//     Answer: 3,
+//     correctImage: "<img src='./assets/images/q2.gif'>",
+//     wrongImage: "<img class='wrongImage' src='./assets/images/thumbs_down.png'>",
 
-},
-{
-    question: "What does Phoebe change her name to in the final season?",
-    potentialAnswers: ["Princess Consuela Bananahammock", "Princess Pheffer Phefferman", "Kitty Kat", "Cindy Crawford"],
-    Answer: 0,
-    correctImage: "<img src='./assets/images/q3.gif'>",
-    wrongImage: "<img class='wrongImage' src='./assets/images/thumbs_down.png'>",
-
-},
+// },
+// {
+//     question: "What does Phoebe change her name to in the final season?",
+//     potentialAnswers: ["Princess Consuela Bananahammock", "Princess Pheffer Phefferman", "Kitty Kat", "Cindy Crawford"],
+//     Answer: 0,
+//     correctImage: "<img src='./assets/images/q3.gif'>",
+//     wrongImage: "<img class='wrongImage' src='./assets/images/thumbs_down.png'>",
+// },
 
 // {
 //     question: "How many categories of towels does Monica have?",
@@ -102,8 +96,6 @@ var data = [{
 
 ];
 
-//click start button to start the game..this is the first thing on the page, and game should start after clicking on "start" with instructions here. Hide when start is clicked.  
-
 $("#reset").hide();
 
 //click start button to start game
@@ -116,7 +108,6 @@ $("#start").on("click", function () {
 });
 
 //click function that scans the document and recongizes class name 'clickable' and runs the following code within the function. 
-// $(".clickable").on("click", function() {})
 
 var startingIndex = 0;
 
@@ -124,6 +115,8 @@ $(document).on("click", ".clickable", function () {
 
     userGuess = ($(this).attr("data-id"));
     console.log(userGuess);
+    clearInterval(timer);
+    questionChangeTimer();
 
     var choice = data[startingIndex].potentialAnswers.indexOf(userGuess);
     console.log(choice);
@@ -135,14 +128,12 @@ $(document).on("click", ".clickable", function () {
         correctAnswers++;
         userGuess = "";
         $("#root").html("<div><p>Correct!</p><br>" + solution.correctImage + "</div>");
-        clearInterval()
        
-       
+    //or if the correct is not picked, then execute the following code:
     } else {
         wrongAnswers++;
         userGuess = " ";
         $("#root").html("<div><p>Wrong! The Answer is: " + solution.potentialAnswers[solution.Answer] + "</p><br>" + solution.wrongImage + "</div>");
-
 
     }
     userGuess = 0;
@@ -150,7 +141,6 @@ $(document).on("click", ".clickable", function () {
 
 
 });
-
 
 //renderAnswer function creates an list of possible answers on the page. It loops through the index of the answer array.
 function renderAnswers(index) {
@@ -163,7 +153,7 @@ function renderAnswers(index) {
     return liElements;
 };
 
-
+//function that displays the question (question template)
 function displayQuestion(index) {
     clearTimeout(postQuestionViewTimer);
     if (!doWeKeepPlaying(index)) {
@@ -174,30 +164,29 @@ function displayQuestion(index) {
         $('#root').html('<h2>Game Over</h2>');
         $(".container").empty();
         $(".container").html("<p>All done! Your results: " + "<p> Correct Answers: " + correctAnswers + "</p>" +  "<p> Wrong Answers: " + wrongAnswers + "</p>" + "<p> Unanswered: " + unanswered + "<p>");
-        $("#reset").show();
 
-        $("#reset").on("click", function () {
-            $("#reset").hide();
-            displayQuestion(startingIndex);
-        
-        });
+        //my intention is to show the reset button here
+        $("#reset").show();
+       
 
     }
     $('#root').html(questionTemplate);
 };
-//quality check, prevents from moving on to the next question
+
+//quality check, function to run through full index of questions
 function doWeKeepPlaying(index) {
     return data.length === index
 
 }
 
-
+//each question will run a timer of 15 seconds
 function questionTimer() {
-timeLeft = 10;
+timeLeft = 15;
 timer = setInterval(function() {
     if(timeLeft === 1) {
         clearInterval(timer);
         questionChangeTimer();
+        // $("#timer").html("Time's up!");
 
     }
     timeLeft--;
@@ -206,6 +195,7 @@ timer = setInterval(function() {
 
 }
 
+//there will be 2 seconds between each question
 function questionChangeTimer() {
     postQuestionViewTimer = setTimeout(function () {
         clearInterval(timer);
@@ -215,12 +205,14 @@ function questionChangeTimer() {
 
 };
 
+//reset button to reset the game
 
-// $("#reset").on("click", function () {
-//     $("#reset").hide();
-//     displayQuestion(startingIndex);
+$("#reset").on("click", function () {
+    $("#reset").hide();
+    displayQuestion(startingIndex);
+    questionChangeTimer();
 
-// });
+});
 
 
 
