@@ -168,6 +168,7 @@ function displayQuestion(index) {
         // $(".container").empty();
         $("#root").html("<div id='game-end'><p>Game over! Your results: " + "<p> Correct Answers: " + correctAnswers + "</p>" + "<p> Wrong Answers: " + wrongAnswers + "</p>" + "<p> Unanswered: " + unanswered + "<p>" +
             "<button id='reset'>Play Again!</button></div>");
+            // $('#timer').hide();
 
 
         $("#reset").on("click", function () {

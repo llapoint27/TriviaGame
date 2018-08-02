@@ -13,7 +13,7 @@
     background-color: #D3D3D3;
     border: 8px solid #abdcfb;
     width: 700px;
-    height: 500px;
+    height: 550px;
     border-radius: 25px;
 
     
@@ -79,6 +79,14 @@ p, #timeLeft, #instructions {
     color: white;
 }
 
+#reset {
+    padding: 15px;
+    font-size: 20px;
+    margin-bottom: 50px;
+    background-color: #00cc66;
+    color: white;
+
+}
 
 img {
     width: 450px;
