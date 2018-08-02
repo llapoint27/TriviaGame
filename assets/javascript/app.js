@@ -2,7 +2,7 @@
 //append reset button at end of the game and reset
 //if function for unanswered questions, I need to write a function to calculate the unaswered questions and diplay at the end of the game (with the correct and incorrect answers)
 
-//I am having a scoping issue that is preventing my 'play again' button from clicking. I need to put everything in the document.onclick function to remove the scoping issue//
+//I am having a scoping issue that is preventing my 'play again' button from clicking. The functions that I need to call are not within scope. I will find a way around this!//
 
 //Define variables
 var timeLeft;
@@ -97,6 +97,8 @@ var data = [{
 
 ];
 
+$(document).ready(function() {
+
 $("#reset").hide();
 
 //click start button to start game
@@ -140,10 +142,9 @@ $(document).on("click", ".clickable", function () {
     }
     userGuess = 0;
 
-
 });
 
-//renderAnswer function creates an list of possible answers on the page. It loops through the index of the answer array.
+//creates and displays an list of possible answers
 function renderAnswers(index) {
     var liElements = " ";
     for (var i = 0; i < data[index].potentialAnswers.length; i++) {
@@ -166,14 +167,13 @@ function displayQuestion(index) {
         // $(".container").empty();
         $(".container").html("<p>Game over! Your results: " + "<p> Correct Answers: " + correctAnswers + "</p>" + "<p> Wrong Answers: " + wrongAnswers + "</p>" + "<p> Unanswered: " + unanswered + "<p>" +
             "<button id='reset'>Play Again!</button>");
-        //   $("#reset").show();
+
 
         $("#reset").on("click", function () {
 
             $("#reset").hide();
             $("#instructions").hide();
             displayQuestion(startingIndex);
-
             questionChangeTimer();
 
         });
@@ -216,22 +216,4 @@ function questionChangeTimer() {
 
 };
 
-//reset button to reset the game
-// console.log()
-
-// $("#reset").on("click", function () {
-//     console.log("i'm here")
-//     $("#reset").hide();
-//     $("#instructions").hide();
-//     displayQuestion(startingIndex);
-
-//     questionChangeTimer();
-
-// });
-
-
-
-
-
-
-
+});
