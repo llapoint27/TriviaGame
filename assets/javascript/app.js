@@ -275,7 +275,7 @@ function doWeKeepPlaying(index) {
 
 //each question will run a timer of 15 seconds
 function questionTimer() {
-    timeLeft = 11;
+    timeLeft = 16;
     timer = setInterval(function () {
         if (timeLeft === 1) {
             clearInterval(timer);
