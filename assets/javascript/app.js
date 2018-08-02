@@ -167,7 +167,7 @@ function displayQuestion(index) {
 
         console.log($("#reset"));
 
-        //   $("#reset").show();
+        //$("#reset").show();
         $("#reset").on("click", function () {
             console.log("i'm here")
             $("#reset").hide();
@@ -177,10 +177,6 @@ function displayQuestion(index) {
             questionChangeTimer();
 
         });
-
-
-
-
     }
 
     $('#root').html(questionTemplate);
@@ -257,10 +253,6 @@ function displayQuestion(index) {
             questionChangeTimer();
 
         });
-
-
-
-
     }
 
     $('#root').html(questionTemplate);
