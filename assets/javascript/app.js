@@ -1,6 +1,6 @@
 //TODO:
 //append reset button at end of the game and reset
-//if function for unanswered questions
+//if function for unanswered questions, I need to write a function to calculate the unaswered questions and diplay at the end of the game (with the correct and incorrect answers)
 
 //I am having a scoping issue that is preventing my 'play again' button from clicking. I need to put everything in the document.onclick function to remove the scoping issue//
 
