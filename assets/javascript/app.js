@@ -1,8 +1,6 @@
 //TODO:
-//append reset button at end of the game and reset
 //if function for unanswered questions, I need to write a function to calculate the unaswered questions and diplay at the end of the game (with the correct and incorrect answers)
 
-//I am having a scoping issue that is preventing my 'play again' button from clicking. The functions that I need to call are not within scope. I will find a way around this!//
 
 //Define variables
 var timeLeft;
@@ -143,6 +141,7 @@ $(document).on("click", ".clickable", function () {
     }
     userGuess = 0;
 
+
 });
 
 //creates and displays an list of possible answers
@@ -168,7 +167,6 @@ function displayQuestion(index) {
         // $(".container").empty();
         $("#root").html("<div id='game-end'><p>Game over! Your results: " + "<p> Correct Answers: " + correctAnswers + "</p>" + "<p> Wrong Answers: " + wrongAnswers + "</p>" + "<p> Unanswered: " + unanswered + "<p>" +
             "<button id='reset'>Play Again!</button></div>");
-            // $('#timer').hide();
 
 
         $("#reset").on("click", function () {
@@ -179,6 +177,7 @@ function displayQuestion(index) {
             $('#game-end').hide();
             $('#button-holder').append(startButton);
             startingIndex = 0;
+
 
         });
 
